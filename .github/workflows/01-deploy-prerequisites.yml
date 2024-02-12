@@ -1,4 +1,4 @@
-name: Deploy prerequisites
+name: 01 - Deploy prerequisites
 
 on:
   workflow_dispatch:

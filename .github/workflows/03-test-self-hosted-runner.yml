@@ -1,4 +1,4 @@
-name: Test self-hosted runners
+name: 03 - Test self-hosted runners
 
 on:
   workflow_dispatch:

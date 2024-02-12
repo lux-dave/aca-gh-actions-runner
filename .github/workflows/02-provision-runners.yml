@@ -1,4 +1,4 @@
-name: Create and register self-hosted runners
+name: 02 - Create and register self-hosted runners
 
 on:
   workflow_dispatch:
