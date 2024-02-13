@@ -14,10 +14,6 @@ param gitHubOrganization string
 
 param useJobs bool = true
 
-resource kv 'Microsoft.KeyVault/vaults@2023-02-01' existing = {
-  name: kvName
-}
-
 module acj '../modules/containerAppJob.bicep' = if (useJobs) {
   name: 'deploy-${project}-acj'
   params: {
