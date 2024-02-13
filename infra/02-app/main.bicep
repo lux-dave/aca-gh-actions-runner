@@ -25,7 +25,6 @@ module acj '../modules/containerAppJob.bicep' = if (useJobs) {
     acrName: acrName
     gitHubAppId: gitHubAppId
     gitHubAppInstallationId: gitHubAppInstallationId
-    gitHubAppKey: kv.getSecret('github-app-key')
     gitHubOrganization: gitHubOrganization
     imageTag: imageTag
     location: location

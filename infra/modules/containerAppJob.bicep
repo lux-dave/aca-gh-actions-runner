@@ -15,8 +15,6 @@ param imageTag string
 
 param gitHubAppId string
 param gitHubAppInstallationId string
-@secure()
-param gitHubAppKey string
 param gitHubOrganization string
 
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
