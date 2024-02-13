@@ -3,7 +3,6 @@ param project string
 param tags {
   *: string
 }
-param tenantId string
 
 module acr '../modules/containerRegistry.bicep' = {
   name: 'deploy-${project}-acr'
