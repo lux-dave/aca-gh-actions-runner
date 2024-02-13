@@ -33,5 +33,6 @@ module resources 'resources.bicep' = {
 
 output project string = project
 output acrName string = resources.outputs.acrName
+output kvName string = resources.outputs.kvName
 output acaEnvName string = resources.outputs.acaEnvName
 output rgName string = rg.name
