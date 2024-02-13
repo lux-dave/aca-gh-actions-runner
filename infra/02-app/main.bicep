@@ -10,8 +10,6 @@ param imageTag string
 param gitHubAccessToken string
 param gitHubAppId string
 param gitHubAppInstallationId string
-@secure()
-param gitHubAppKey string
 param gitHubOrganization string
 
 param useJobs bool = true
