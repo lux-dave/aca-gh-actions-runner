@@ -9,7 +9,7 @@ var uniqueSuffix = uniqueString(subscription().id, location, project)
 
 resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   location: location
-  name: 'kv-${project}-${uniqueSuffix}'
+  name: take('kv-${project}-${uniqueSuffix}', 24)
   tags: tags
   properties: {
     enablePurgeProtection:false
