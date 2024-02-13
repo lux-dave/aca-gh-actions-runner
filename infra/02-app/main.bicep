@@ -16,6 +16,10 @@ param gitHubOrganization string
 
 param useJobs bool = true
 
+resource kv 'Microsoft.KeyVault/vaults@2023-02-01' existing = {
+  name: kvName
+}
+
 module acj '../modules/containerAppJob.bicep' = if (useJobs) {
   name: 'deploy-${project}-acj'
   params: {
@@ -23,7 +27,7 @@ module acj '../modules/containerAppJob.bicep' = if (useJobs) {
     acrName: acrName
     gitHubAppId: gitHubAppId
     gitHubAppInstallationId: gitHubAppInstallationId
-    gitHubAppKey: gitHubAppKey
+    gitHubAppKey: kv.getSecret('github-app-key')
     gitHubOrganization: gitHubOrganization
     imageTag: imageTag
     location: location

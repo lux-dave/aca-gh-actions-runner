@@ -60,6 +60,7 @@ resource acaKeyVaultSecretsUser 'Microsoft.Authorization/roleAssignments@2022-04
   }
 }
 
+
 resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
   name: 'caj-${project}'
   location: location
@@ -82,13 +83,13 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
       secrets: [
         {
           name:'github-app-key'
-          keyVaultUrl: kv.properties.vaultUri
+          keyVaultUrl: gitHubAppKey
           identity: acaMsi.id
         }
-        {
-          name: 'github-app-key-backup'
-          value: gitHubAppKey
-        }
+        // {
+        //   name: 'github-app-key-backup'
+        //   value: gitHubAppKey
+        // }
       ]
       replicaTimeout: 1800
       triggerType: 'Event'
