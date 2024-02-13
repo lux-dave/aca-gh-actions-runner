@@ -4,6 +4,7 @@ param tags {
   *: string
 }
 param tenantId string
+param enablePurgeProtection bool = false
 
 var uniqueSuffix = uniqueString(subscription().id, location, project)
 
@@ -12,7 +13,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   name: take('kv-${project}-${uniqueSuffix}', 24)
   tags: tags
   properties: {
-    enablePurgeProtection:false
+    enablePurgeProtection: enablePurgeProtection ? true : null
     enableRbacAuthorization: true
     sku:{
       name: 'standard'
