@@ -3,6 +3,7 @@ param project string
 param tags {
   *: string
 }
+param tenantId string
 
 module acr '../modules/containerRegistry.bicep' = {
   name: 'deploy-${project}-acr'
@@ -10,6 +11,16 @@ module acr '../modules/containerRegistry.bicep' = {
     location: location
     project: project
     tags: union(tags, { module: 'containerRegistry.bicep' })
+  }
+}
+
+module kv '../modules/keyVault.bicep' = {
+  name: 'deploy-${project}-kv'
+  params:{
+    location:location
+    project:project
+    tags: union(tags, { module: 'keyVault.bicep' })
+    tenantId:tenantId
   }
 }
 
@@ -34,3 +45,4 @@ module acaEnv '../modules/containerAppEnvironment.bicep' = {
 
 output acrName string = acr.outputs.acrName
 output acaEnvName string = acaEnv.outputs.acaEnvName
+output kvName string = kv.outputs.kvName

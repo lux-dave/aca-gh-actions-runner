@@ -11,6 +11,8 @@ var tags = {
   repo: 'aca-gh-actions-runner'
 }
 
+param tenantId string
+
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: 'rg-${project}'
   location: location
@@ -25,6 +27,7 @@ module resources 'resources.bicep' = {
     location: location
     tags: union(tags, { module: '01-prerequisites/resources.bicep' })
     project: project
+    tenantId: tenantId
   }
 }
 

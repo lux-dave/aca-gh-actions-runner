@@ -35,7 +35,7 @@ jobs:
           template: infra/01-prerequisites/main.bicep
           region: ${{ vars.AZURE_LOCATION }}
           parameters: >
-            location=${{ vars.AZURE_LOCATION }}
+            location=${{ vars.AZURE_LOCATION }} tenantId=${{ vars.AZURE_TENANT_ID }}
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token
