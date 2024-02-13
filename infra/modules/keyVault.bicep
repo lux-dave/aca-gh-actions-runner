@@ -23,4 +23,12 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   }
 }
 
+resource kvGhAppKey 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
+  parent: kv
+  name: 'github-app-key'
+  properties: {
+    value: ''
+  }
+}
+
 output kvName string = kv.name
