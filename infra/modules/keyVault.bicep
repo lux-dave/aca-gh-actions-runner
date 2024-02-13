@@ -3,7 +3,6 @@ param project string
 param tags {
   *: string
 }
-param tenantId string
 param enablePurgeProtection bool = false
 
 var uniqueSuffix = uniqueString(subscription().id, location, project)
@@ -20,7 +19,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
       name: 'standard'
       family: 'A'
     }
-    tenantId: tenantId
+    tenantId: tenant().tenantId
   }
   resource kvGhAppKey 'secrets' = {
     name: 'github-app-key'

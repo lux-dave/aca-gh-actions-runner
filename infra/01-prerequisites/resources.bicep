@@ -20,7 +20,6 @@ module kv '../modules/keyVault.bicep' = {
     location:location
     project:project
     tags: union(tags, { module: 'keyVault.bicep' })
-    tenantId:tenantId
   }
 }
 
