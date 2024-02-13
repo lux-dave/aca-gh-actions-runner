@@ -53,7 +53,8 @@ jobs:
           template: ./infra/02-app/main.bicep
           parameters: >
             project=${{ vars.PROJECT }} 
-            acrName=${{ vars.ACR_NAME }} 
+            acrName=${{ vars.ACR_NAME }}
+            kvName=${{ vars.KV_NAME }} 
             acaEnvName=${{ vars.ACA_ENV_NAME }} 
             imageTag=from-base
             gitHubAccessToken=${{ steps.generate-access-token.outputs.token }}

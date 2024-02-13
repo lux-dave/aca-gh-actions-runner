@@ -2,6 +2,7 @@ param location string = resourceGroup().location
 param project string
 
 param acrName string
+param kvName string
 param acaEnvName string
 param imageTag string
 
@@ -28,6 +29,7 @@ module acj '../modules/containerAppJob.bicep' = if (useJobs) {
     location: location
     project: project
     tags: union(resourceGroup().tags, { module: 'containerAppJob.bicep' })
+    kvName:kvName
   }
 }
 
@@ -42,5 +44,6 @@ module aca '../modules/containerApp.bicep' = if (!useJobs) {
     location: location
     project: project
     tags: union(resourceGroup().tags, { module: 'containerApp.bicep' })
+    kvName:kvName
   }
 }
