@@ -25,7 +25,10 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' existing = {
 
 resource kv 'Microsoft.KeyVault/vaults@2023-07-01' existing = {
   name: kvName
-}
+  resource secret 'secrets' existing = {
+    name: 'github-app-key'
+  }
+  }
 
 resource acaEnv 'Microsoft.App/managedEnvironments@2023-05-01' existing = {
   name: acaEnvironmentName
@@ -83,13 +86,9 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
       secrets: [
         {
           name:'github-app-key'
-          keyVaultUrl: gitHubAppKey
+          keyVaultUrl: '@Microsoft.KeyVault(SecretUri=${kv::secret.properties.secretUri})'
           identity: acaMsi.id
         }
-        // {
-        //   name: 'github-app-key-backup'
-        //   value: gitHubAppKey
-        // }
       ]
       replicaTimeout: 1800
       triggerType: 'Event'

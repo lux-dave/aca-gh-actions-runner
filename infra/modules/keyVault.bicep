@@ -15,20 +15,21 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   properties: {
     enablePurgeProtection: enablePurgeProtection ? true : null
     enableRbacAuthorization: true
+    enabledForTemplateDeployment: true
     sku:{
       name: 'standard'
       family: 'A'
     }
     tenantId: tenantId
   }
-}
-
-resource kvGhAppKey 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
-  parent: kv
-  name: 'github-app-key'
-  properties: {
-    value: ''
+  resource kvGhAppKey 'secrets' = {
+    name: 'github-app-key'
+    properties: {
+      value: ''
+    }
   }
 }
+
+
 
 output kvName string = kv.name
