@@ -84,7 +84,7 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
       secrets: [
         {
           name:'github-app-key'
-          keyVaultUrl: 'https://${kv.name}${environment().suffixes.keyvaultDns}/secrets/github-app-key'
+          keyVaultUrl: kv::secret.properties.secretUri //'https://${kv.name}${environment().suffixes.keyvaultDns}/secrets/github-app-key'
           identity: acaMsi.id
         }
       ]
