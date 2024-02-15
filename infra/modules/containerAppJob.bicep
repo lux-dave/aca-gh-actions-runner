@@ -84,8 +84,8 @@ resource acaJob 'Microsoft.App/jobs@2023-05-01' = {
       secrets: [
         {
           name:'github-app-key'
-          keyVaultUrl: kv::secret.properties.secretUri //'https://${kv.name}${environment().suffixes.keyvaultDns}/secrets/github-app-key'
-          identity: toLower(acaMsi.id)
+          keyVaultUrl: kv::secret.properties.secretUri
+          identity: replace(acaMsi.id, 'Group', 'group')
         }
       ]
       replicaTimeout: 1800
