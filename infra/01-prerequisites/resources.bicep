@@ -24,15 +24,6 @@ module kv '../modules/keyVault.bicep' = {
   }
 }
 
-module kv '../modules/keyVault.bicep' = {
-  name: 'deploy-${project}-kv'
-  params:{
-    location:location
-    project:project
-    tags: union(tags, { module: 'keyVault.bicep' })
-  }
-}
-
 module law '../modules/logAnalytics.bicep' = {
   name: 'deploy-${project}-law'
   params: {
