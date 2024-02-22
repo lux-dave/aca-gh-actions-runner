@@ -2,7 +2,12 @@ name: Deploy prerequisites
 
 on:
   workflow_dispatch:
-
+    inputs:
+      suffix:
+        type: string
+        description: unique suffix for acr,...
+        required: true
+        
 permissions:
   id-token: write
   contents: read
@@ -35,7 +40,7 @@ jobs:
           template: infra/01-prerequisites/main.bicep
           region: ${{ vars.AZURE_LOCATION }}
           parameters: >
-            location=${{ vars.AZURE_LOCATION }}
+            location=${{ vars.AZURE_LOCATION }} suffix=${{ inputs.suffix }}
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token

@@ -3,9 +3,10 @@ param project string
 param tags {
   *: string
 }
+param suffix string
 
 resource law 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: 'log-${project}'
+  name: 'log-${project}-${suffix}'
   location: location
   tags: tags
 

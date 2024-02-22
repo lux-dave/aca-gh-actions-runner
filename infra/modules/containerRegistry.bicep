@@ -3,10 +3,11 @@ param project string
 param tags {
   *: string
 }
+param suffix string
 
-var uniqueSuffix = uniqueString(subscription().id, location, project)
+
 resource acr 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
-  name: 'acr${replace(project, '-', '')}${uniqueSuffix}'
+  name: 'acr${replace(project, '-', '')}${replace(suffix, '-', '')}'
   location: location
   tags: tags
   sku: {
