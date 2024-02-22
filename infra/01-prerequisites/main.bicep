@@ -15,7 +15,7 @@ var tags = {
 
 
 resource rg 'Microsoft.Resources/resourceGroups@2022-09-01' = {
-  name: 'rg-${project}-${suffix}'
+  name: 'rg-${project}'
   location: location
   tags: tags
 }
