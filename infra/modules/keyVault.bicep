@@ -4,12 +4,12 @@ param tags {
   *: string
 }
 param enablePurgeProtection bool = false
+param suffix string
 
-var uniqueSuffix = uniqueString(subscription().id, location, project)
 
 resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   location: location
-  name: take('kv-${project}-${uniqueSuffix}', 24)
+  name: take('kv-${project}-${suffix}', 24)
   tags: tags
   properties: {
     enablePurgeProtection: enablePurgeProtection ? true : null

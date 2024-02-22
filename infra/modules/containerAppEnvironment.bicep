@@ -4,13 +4,14 @@ param tags {
   *: string
 }
 param lawName string
+param suffix string
 
 resource law 'Microsoft.OperationalInsights/workspaces@2022-10-01' existing = {
   name: lawName
 }
 
 resource acaEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
-  name: 'cae-${project}'
+  name: 'cae-${project}-${suffix}'
   location: location
   tags: tags
   properties: {
