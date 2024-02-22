@@ -4,6 +4,7 @@ param tags {
   *: string
 }
 param enablePurgeProtection bool = false
+@maxLength(6)
 param suffix string
 
 

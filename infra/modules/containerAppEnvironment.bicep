@@ -4,6 +4,7 @@ param tags {
   *: string
 }
 param lawName string
+@maxLength(6)
 param suffix string
 
 resource law 'Microsoft.OperationalInsights/workspaces@2022-10-01' existing = {

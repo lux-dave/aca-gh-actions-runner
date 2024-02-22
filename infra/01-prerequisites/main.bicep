@@ -4,6 +4,7 @@ targetScope = 'subscription'
 @description('Primary location for all resources')
 param location string
 @minLength(2)
+@maxLength(6)
 param suffix string
 var project = 'aca-gh-runners'
 

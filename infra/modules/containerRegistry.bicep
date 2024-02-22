@@ -3,6 +3,7 @@ param project string
 param tags {
   *: string
 }
+@maxLength(6)
 param suffix string
 
 

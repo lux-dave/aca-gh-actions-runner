@@ -8,7 +8,7 @@ on:
         type: boolean
         default: true
         required: true
-
+      
 permissions:
   id-token: write
   contents: read

@@ -3,6 +3,7 @@ param project string
 param tags {
   *: string
 }
+@maxLength(6)
 param suffix string
 module acr '../modules/containerRegistry.bicep' = {
   name: 'deploy-${project}-acr'
