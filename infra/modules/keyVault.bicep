@@ -13,7 +13,7 @@ param ghPrivateKey string
 
 resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   location: location
-  name: take('kv-${project}-${suffix}', 24)
+  name: take('kv-${project}-${suffix}-${uniqueString(suffix)}', 24)
   tags: tags
   properties: {
     enablePurgeProtection: enablePurgeProtection ? true : null
