@@ -6,6 +6,8 @@ param location string
 @minLength(2)
 @maxLength(6)
 param suffix string
+@secure()
+param ghPrivateKey string
 var project = 'aca-gh-runners'
 
 var tags = {
@@ -29,6 +31,7 @@ module resources 'resources.bicep' = {
     tags: union(tags, { module: '01-prerequisites/resources.bicep' })
     project: project
     suffix: suffix
+    ghPrivateKey: ghPrivateKey
   }
 }
 

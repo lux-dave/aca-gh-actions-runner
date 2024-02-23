@@ -40,7 +40,7 @@ jobs:
           template: infra/01-prerequisites/main.bicep
           region: ${{ vars.AZURE_LOCATION }}
           parameters: >
-            location=${{ vars.AZURE_LOCATION }} suffix=${{ inputs.suffix }}
+            location=${{ vars.AZURE_LOCATION }} suffix=${{ inputs.suffix }} ghPrivateKey=${{ secrets.GH_APP_PRIVATE_KEY }}
           deploymentName: deploy-aca-gh-runners-dev-prerequisites
 
       - name: Generate access token

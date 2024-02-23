@@ -7,6 +7,9 @@ param enablePurgeProtection bool = false
 @maxLength(6)
 param suffix string
 
+@secure()
+param ghPrivateKey string
+
 
 resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   location: location
@@ -25,7 +28,7 @@ resource kv 'Microsoft.KeyVault/vaults@2022-07-01' = {
   resource kvGhAppKey 'secrets' = {
     name: 'github-app-key'
     properties: {
-      value: ''
+      value: ghPrivateKey
     }
   }
 }

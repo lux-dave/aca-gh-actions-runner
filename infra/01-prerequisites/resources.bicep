@@ -5,6 +5,9 @@ param tags {
 }
 @maxLength(6)
 param suffix string
+@secure()
+param ghPrivateKey string
+
 module acr '../modules/containerRegistry.bicep' = {
   name: 'deploy-${project}-acr'
   params: {
@@ -22,6 +25,7 @@ module kv '../modules/keyVault.bicep' = {
     project:project
     tags: union(tags, { module: 'keyVault.bicep' })
     suffix: suffix
+    ghPrivateKey: ghPrivateKey
   }
 }
 
