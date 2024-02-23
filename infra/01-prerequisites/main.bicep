@@ -7,7 +7,7 @@ param location string
 @maxLength(6)
 param suffix string
 @secure()
-param ghPrivateKey string
+param ghPrivateKey string = ''
 var project = 'aca-gh-runners'
 
 var tags = {
